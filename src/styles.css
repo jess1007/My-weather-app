@@ -25,3 +25,8 @@ p {
 #farenheit-link {
   display: inline;
 }
+.signature {
+  position: relative;
+  top: 50px;
+  font-size: small;
+}
