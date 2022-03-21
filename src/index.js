@@ -44,6 +44,16 @@ function showWeather(response) {
   let currentFeelsLike = Math.round(response.data.main.feels_like);
   let todayFeelsLike = document.querySelector("#today-feels-like");
   todayFeelsLike.innerHTML = `${currentFeelsLike}`;
+  let currentDescription = response.data.weather[0].description;
+  let todayDescription = document.querySelector("#weather-description");
+  todayDescription.innerHTML = `${currentDescription}`;
+  let currentIcon = response.data.weather[0].icon;
+  let todayIcon = document.querySelector("#icon");
+  todayIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${currentIcon}@2x.png`
+  );
+  todayIcon.setAttribute("alt", `${currentDescription}`);
 }
 function searchLocation(position) {
   let apiKey = "639a25b57aa39c61186426161599dec9";
