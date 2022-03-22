@@ -15,18 +15,21 @@ let date = `${day} ${hours}:${minutes}`;
 let todayDate = document.querySelector("#date");
 todayDate.innerHTML = `${date}`;
 
-function search(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#searchCity");
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `${cityInput.value}`;
+function search(city) {
   let apiKey = "639a25b57aa39c61186426161599dec9";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(`${apiUrl}`).then(showWeather);
 }
+function handleClick(event) {
+  event.preventDefault();
+  let city = document.querySelector("#searchCity").value;
+  console.log(city);
+  search(city);
+}
+
 let form = document.querySelector("form");
-form.addEventListener("submit", search);
-form.addEventListener("click", search);
+form.addEventListener("submit", handleClick);
+form.addEventListener("click", handleClick);
 
 function showWeather(response) {
   let currentCity = response.data.name;
@@ -68,3 +71,5 @@ function getCurrentLocation(event) {
 let current = document.querySelector("#current-location-button");
 current.addEventListener("click", getCurrentLocation);
 current.addEventListener("submit", getCurrentLocation);
+
+search("Melbourne");
