@@ -1,5 +1,5 @@
 .container {
-  border: 5px solid #6c7384;
+  border: 5px solid #5f6264;
   padding-top: 10px;
 }
 h1,
@@ -39,4 +39,11 @@ li {
   height: 15px;
   list-style: none;
   margin: 8px 0;
+}
+.weather-forecast {
+  text-align: center;
+  color: #5f6264;
+}
+.temperature-forecast-max {
+  font-weight: bolder;
 }
