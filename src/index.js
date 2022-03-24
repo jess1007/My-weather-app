@@ -15,6 +15,31 @@ let date = `${day} ${hours}:${minutes}`;
 let todayDate = document.querySelector("#date");
 todayDate.innerHTML = `${date}`;
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let forecastDays = ["Thu", "Fri", "Sat", "Sun"];
+  forecastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="col-2">
+              <div class="day-forecast">${day}</div>
+              <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="clouds" width="75%"/>
+              <div class="temperature-forecast">
+                <span class="temperature-forecast-min">12°</span>|<span class="temperature-forecast-max">21°</span>
+              </div>
+            </div>
+        `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+let form = document.querySelector("form");
+form.addEventListener("submit", handleClick);
+form.addEventListener("click", handleClick);
+
 function search(city) {
   let apiKey = "639a25b57aa39c61186426161599dec9";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -26,10 +51,6 @@ function handleClick(event) {
   console.log(city);
   search(city);
 }
-
-let form = document.querySelector("form");
-form.addEventListener("submit", handleClick);
-form.addEventListener("click", handleClick);
 
 function showWeather(response) {
   let currentCity = response.data.name;
@@ -94,3 +115,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 search("Melbourne");
+showForecast();
