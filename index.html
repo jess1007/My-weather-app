@@ -19,6 +19,7 @@
   </head>
   <body>
     <div class="container">
+        <div class="search-bar">
       <div class="row">
         <div class="col-9">
           <form>
@@ -27,7 +28,7 @@
               type="text"
               class="form-control"
               autofocus="on"
-              placeholder="Enter a City"
+              placeholder="Enter a City 🔎 "
               id="searchCity"
             />
             <button type="button" class="btn btn-dark">Search</button>
@@ -39,13 +40,14 @@
                   Current
                 </button>
           </div>
-        </div>
+          </div>
+          </div>
         <div class="col-3"></div>
         <div class="col">
-          <h1>Melbourne</h1>
+          <h1 id="current-city">Melbourne</h1>
         </div>
         <div class="row">
-          <div class="col-2">
+          <div class="col-2" id="current-city-temperature">
             <p id="date"></p>
             <h1 span class="temperature" id ="today-temperature"></h1>
             <span class="metrics">

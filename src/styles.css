@@ -1,8 +1,12 @@
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
 .container {
-  border: 5px solid #5f6264;
+  border: 4px solid #5f6264;
   border-radius: 20px;
-  padding-top: 10px;
+  padding: 10px;
   max-width: 80%;
+  padding-left: 20px;
 }
 h1,
 h2,
@@ -18,12 +22,7 @@ p {
 .temperature {
   display: inline;
 }
-#celsius-link {
-  display: inline;
-}
-#farenheit-link {
-  display: inline;
-}
+
 .signature {
   position: relative;
   top: 50px;
@@ -41,6 +40,7 @@ li {
   height: 15px;
   list-style: none;
   margin: 8px 0;
+  font-size: 17px;
 }
 .weather-forecast {
   text-align: center;
@@ -48,4 +48,15 @@ li {
 }
 .temperature-forecast-max {
   font-weight: bolder;
+}
+.search-bar {
+  padding: 10px;
+}
+#current-city {
+  position: relative;
+  left: 8px;
+}
+#current-city-temperature {
+  position: relative;
+  left: 8px;
 }
