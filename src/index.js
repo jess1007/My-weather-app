@@ -21,26 +21,42 @@ let date = `${day} ${hours}:${minutes}`;
 let todayDate = document.querySelector("#date");
 todayDate.innerHTML = `${date}`;
 
+function formatDayForecast(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function showForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let forecastDays = ["Thu", "Fri", "Sat", "Sun"];
-  forecastDays.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
   <div class="col-2">
-              <div class="day-forecast">${day}</div>
-              <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="clouds" width="75%"/>
+              <div class="day-forecast">${formatDayForecast(
+                forecastDay.dt
+              )}</div>
+              <img src="https://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }.png" alt="clouds" width="75%"/>
               <div class="temperature-forecast">
-                <span class="temperature-forecast-min">12°</span>|<span class="temperature-forecast-max">21°</span>
+                <span class="temperature-forecast-min">${Math.round(
+                  forecastDay.temp.min
+                )}</span>°|<span class="temperature-forecast-max">${Math.round(
+          forecastDay.temp.max
+        )}</span>°
               </div>
             </div>
         `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(response);
 }
 
 let form = document.querySelector("form");
@@ -128,4 +144,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 search("Melbourne");
-showForecast();
