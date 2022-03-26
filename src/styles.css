@@ -1,6 +1,8 @@
 .container {
   border: 5px solid #5f6264;
+  border-radius: 20px;
   padding-top: 10px;
+  max-width: 80%;
 }
 h1,
 h2,

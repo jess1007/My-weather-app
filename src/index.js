@@ -119,28 +119,8 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
-function convertToFarenheit(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#today-temperature");
-  let currentTempFarenheit = (celsiusTemp * 9) / 5 + 32;
-  currentTemp.innerHTML = Math.round(currentTempFarenheit);
-}
-function convertToCelsius(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#today-temperature");
-  currentTemp.innerHTML = Math.round(celsiusTemp);
-}
-
-let celsiusTemp = null;
-
 let current = document.querySelector("#current-location-button");
 current.addEventListener("click", getCurrentLocation);
 current.addEventListener("submit", getCurrentLocation);
-
-let farenheitLink = document.querySelector("#farenheit-link");
-farenheitLink.addEventListener("click", convertToFarenheit);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
 
 search("Melbourne");
